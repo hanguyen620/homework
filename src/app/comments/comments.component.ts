@@ -8,8 +8,7 @@ import { GetsService } from '../gets.service';
 })
 export class CommentsComponent implements OnInit {
   loadData: any = []
-  loadProd: any = []
-  carts = 'carts'
+  comments = 'comments'
 
   constructor(private gets: GetsService) { }
 
@@ -18,10 +17,8 @@ export class CommentsComponent implements OnInit {
   }
 
   load() {
-    this.gets.fetchData(this.carts).subscribe(data => {
-      this.loadData = data.carts
-      this.loadProd = data.carts.products
-        console.log(this.loadProd);
+    this.gets.fetchData(this.comments).subscribe(data => {
+      this.loadData = data.comments
     })
   }
 }
