@@ -1,0 +1,17 @@
+.content {
+    margin-bottom: 10px
+}
+.card-content {
+    margin-bottom: 6px;
+    overflow: hidden;
+    height: 200px;
+}
+.col-sm-6 {
+    margin-bottom: 16px;
+}
+.show-more {
+    border-radius: 10px;
+    border: none;
+    padding: 6px;
+    background-color: antiquewhite;
+}

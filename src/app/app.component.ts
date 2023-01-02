@@ -9,5 +9,10 @@ import { GetsService } from './gets.service';
 })
 export class AppComponent {
   constructor(private gets: GetsService) { }
-  
+  showFiller = false;
+
+  OnChange() {
+    this.showFiller = !this.showFiller;
+    
+  }
 }

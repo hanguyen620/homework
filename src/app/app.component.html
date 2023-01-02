@@ -1,32 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/products"
-            >Products</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/users"
-            >Users</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/posts"
-            >Posts</a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" routerLink="/comments"
-            >Comments</a
-          >
-        </li>
-      </ul>
-    </div>
+<div class="container-fluid">
+  <div class="row sidebar">
+    <button class="btn btn-primary" (click)="OnChange()">
+      {{ showFiller ? "Open" : "Close" }}
+    </button>
+
+    <ul class="nav nav-pills" *ngIf="!showFiller">
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/products"
+          >Products</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/users"
+          >Users</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/posts"
+          >Posts</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/carts"
+          >Carts</a
+        >
+      </li>
+    </ul>
   </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+  <div class="row full-width">
+    <div class="col">
       <router-outlet></router-outlet>
     </div>
   </div>

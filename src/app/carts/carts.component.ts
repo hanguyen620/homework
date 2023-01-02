@@ -6,12 +6,13 @@ import { Observable } from 'rxjs'
 import {GetsService} from '../gets.service'
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-carts',
+  templateUrl: './carts.component.html',
+  styleUrls: ['./carts.component.css']
 })
-export class ProductsComponent implements OnInit {
-  products = 'products'
+export class CartsComponent implements OnInit {
+  loadData = []
+  carts = 'carts'
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   obs!: Observable<any>;
   dataSource!: MatTableDataSource<any>;
@@ -21,14 +22,13 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.load()
   }
-  
+
   load() {
-    this.gets.fetchData(this.products).subscribe(data => {
-      this.dataSource = new MatTableDataSource<any>(data.products);
+    this.gets.fetchData(this.carts).subscribe(data => {
+      this.dataSource = new MatTableDataSource<any>(data.carts);
       this.changeDetectorRef.detectChanges();
       this.dataSource.paginator = this.paginator;
-      this.obs = this.dataSource.connect();  
+      this.obs = this.dataSource.connect();
     })
   }
-
 }

@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator' 
+import { MatTableDataSource } from '@angular/material/table'
 
-import {GetsService} from '../gets.service'
+import { GetsService } from '../gets.service'
 
 @Component({
   selector: 'app-users',
@@ -8,7 +10,6 @@ import {GetsService} from '../gets.service'
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  loadData: any = []
   users = 'users'
 
   constructor(private gets: GetsService) { }
@@ -17,10 +18,15 @@ export class UsersComponent implements OnInit {
     this.load()
   }
 
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'birthDate'];
+  dataSource: any;
+  @ViewChild(MatPaginator) paginator !: MatPaginator;
+
   load() {
-    this.gets.fetchData(this.users).subscribe(data => {
-      this.loadData = data.users
-        console.log(this.loadData);
+    this.gets.fetchData(this.users).subscribe(data => {     
+      this.dataSource = new MatTableDataSource<any>(data.users)
+      this.dataSource.paginator = this.paginator
     })
   }
+
 }

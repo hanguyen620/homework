@@ -1,11 +1,18 @@
 <div class="row">
-  <div class="col-sm-6" *ngFor="let post of loadData">
+  <div class="col-sm-6" *ngFor="let post of obs | async; let i = index">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-        <p class="card-text">{{ post.body }}</p>
+        <div class="content">
+          <p ngClass="card-text card-content">
+            {{ post.body }}
+          </p>
+        </div>
         <p class="card-text">{{ post.tags }}</p>
       </div>
     </div>
   </div>
+</div>
+<div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
 </div>
