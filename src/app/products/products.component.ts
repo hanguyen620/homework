@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table'
 import { MatPaginator } from '@angular/material/paginator'
 import { Observable } from 'rxjs'
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   obs!: Observable<any>;
   dataSource!: MatTableDataSource<any>;
   
-  constructor(private gets: GetsService, private changeDetectorRef: ChangeDetectorRef) { }
+  constructor(private gets: GetsService, private changeDetectorRef: ChangeDetectorRef, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.load()
@@ -28,7 +29,7 @@ export class ProductsComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();  
+      console.log(this.dataSource)
     })
   }
-
 }

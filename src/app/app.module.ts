@@ -17,10 +17,15 @@ import { PostsComponent } from './posts/posts.component';
 import { CartsComponent } from './carts/carts.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import { ProductComponent } from './products/product/product.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'products', component: ProductsComponent, children: [
+      {path: ':id', component: ProductComponent }
+    ]
+  },
   { path: 'users', component: UsersComponent },
   { path: 'posts', component: PostsComponent },
   { path: 'carts', component: CartsComponent },
@@ -36,6 +41,7 @@ const appRoutes: Routes = [
     PostsComponent,
     CartsComponent,
     HomeComponent,
+    ProductComponent,
     
   ],
   imports: [
