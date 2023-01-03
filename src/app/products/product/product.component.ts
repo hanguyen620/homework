@@ -15,8 +15,7 @@ export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private products: ProductsComponent) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.paramMap.get('id');
-    this.product = this.products.dataSource.filteredData
-    .find(prod => prod.id === id)
+    let id = this.route.snapshot.params['id'];
+    this.product = this.products.showData(id)
   }
 }

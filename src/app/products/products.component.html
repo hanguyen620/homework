@@ -11,7 +11,11 @@
     <mat-card-content>
       {{ prod.description }}
     </mat-card-content>
-    <button class="btn btn-primary" [routerLink]="['/products', prod.id]">
+    <button
+      class="btn btn-primary"
+      [routerLink]="['/products', prod.id]"
+      (click)="showData(prod.id)"
+    >
       More Info
     </button>
   </mat-card>

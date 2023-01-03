@@ -32,4 +32,10 @@ export class ProductsComponent implements OnInit {
       console.log(this.dataSource)
     })
   }
+  showData(id:number) {
+    const product = this.dataSource.filteredData
+      .find(prod => prod.id === id)
+    console.log(product)
+    return product
+  }
 }
