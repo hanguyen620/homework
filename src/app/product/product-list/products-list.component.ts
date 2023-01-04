@@ -1,19 +1,21 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material/table'
 import { MatPaginator } from '@angular/material/paginator'
 import { Observable } from 'rxjs'
 
-import {GetsService} from '../gets.service'
+import { GetsService } from '../../gets.service'
+import { Product } from '../product';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsListComponent implements OnInit {
   products = 'products'
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @Output() newProd = new EventEmitter<Product>();
   obs!: Observable<any>;
   dataSource!: MatTableDataSource<any>;
   
@@ -29,11 +31,12 @@ export class ProductsComponent implements OnInit {
       this.changeDetectorRef.detectChanges();
       this.dataSource.paginator = this.paginator;
       this.obs = this.dataSource.connect();  
-      console.log(this.dataSource)
+      this.newProd.emit(data.products)
+      
     })
   }
   showData(id:number) {
-    const product = this.dataSource.filteredData
+    let product = this.dataSource.filteredData
       .find(prod => prod.id === id)
     console.log(product)
     return product

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row" *ngIf="product">
+    <ul>
+      <li>{{ product.title }}</li>
+      <li>{{ product.price }}</li>
+      <li>{{ product.discountPercentage }}</li>
+      <li>{{ product.rating }}</li>
+      <li>{{ product.brand }}</li>
+      <button class="btn btn-primary" (click)="load()">Show Product</button>
+    </ul>
+  </div>
+</div>

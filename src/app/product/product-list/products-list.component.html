@@ -11,15 +11,19 @@
     <mat-card-content>
       {{ prod.description }}
     </mat-card-content>
+
     <button
       class="btn btn-primary"
-      [routerLink]="['/products', prod.id]"
       (click)="showData(prod.id)"
+      [routerLink]="['/products', prod.id]"
     >
       More Info
     </button>
   </mat-card>
 </div>
+<!-- <div>
+  <router-outlet></router-outlet>
+</div> -->
 <div>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"> </mat-paginator>
 </div>
